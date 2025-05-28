@@ -1,5 +1,7 @@
 import React from "react";
 
+import "../src/styles/globals.css";
+
 function App() {
   return (
     <div>
