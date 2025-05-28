@@ -3,8 +3,9 @@
 module.exports = {
   extends: [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended", // TypeScript 권장 규칙
-    "prettier", // Prettier 규칙과 충돌하는 ESLint 규칙 비활성화 (반드시 마지막에 추가)
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:storybook/recommended"
   ],
   parser: "@typescript-eslint/parser", // TypeScript 파서 사용
   plugins: [

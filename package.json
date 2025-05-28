@@ -3,7 +3,9 @@
   "packageManager": "yarn@4.6.0",
   "scripts": {
     "dev": "webpack serve --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "react": "^19.1.0",
@@ -14,11 +16,17 @@
     "@babel/preset-env": "^7.27.2",
     "@babel/preset-react": "^7.27.1",
     "@babel/preset-typescript": "^7.27.1",
+    "@storybook/addon-docs": "^9.0.0",
+    "@storybook/addon-onboarding": "^9.0.0",
+    "@storybook/addon-webpack5-compiler-swc": "^3.0.0",
+    "@storybook/react-webpack5": "^9.0.0",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
     "babel-loader": "^10.0.0",
     "css-loader": "^7.1.2",
+    "eslint-plugin-storybook": "^9.0.0",
     "html-webpack-plugin": "^5.6.3",
+    "storybook": "^9.0.0",
     "style-loader": "^4.0.0",
     "ts-loader": "^9.5.2",
     "typescript": "^5.8.3",
