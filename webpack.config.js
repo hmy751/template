@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development", // 또는 'production' (개발 모드 또는 프로덕션 모드)
-  entry: "./src/index.jsx", // 애플리케이션 진입점
+  entry: "./src/index.tsx", // 애플리케이션 진입점
   output: {
     path: path.resolve(__dirname, "dist"), // 빌드 결과물이 저장될 경로
     filename: "bundle.js", // 빌드된 JavaScript 파일 이름
