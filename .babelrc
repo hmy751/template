@@ -1,0 +1,7 @@
+{
+  "presets": [
+    "@babel/preset-env", // 최신 JavaScript 문법 지원
+    ["@babel/preset-react", { "runtime": "automatic" }], // React JSX 지원 (runtime: automatic은 React 17 이상에서 import React from 'react' 생략 가능)
+    "@babel/preset-typescript" // Typescript 프리셋
+  ]
+}
