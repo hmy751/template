@@ -21,7 +21,7 @@ module.exports = {
       },
       {
         test: /\.css$/, // .css 확장자를 가진 파일 (CSS 로더를 설치한 경우)
-        use: ["style-loader", "css-loader"], // style-loader와 css-loader를 사용
+        use: ["style-loader", "css-loader", "postcss-loader"], // style-loader와 css-loader를 사용
       },
       // 이미지나 폰트 같은 다른 파일 타입에 대한 로더 추가 가능
       // {

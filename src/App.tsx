@@ -1,6 +1,7 @@
 import React from "react";
 
 import "../src/styles/globals.css";
+// import "../src/styles/tailwindcss.globals.css";
 
 function App() {
   return (
