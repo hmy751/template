@@ -1,5 +1,6 @@
 import Spinner from "../Spinner";
 import styles from "./index.module.css";
+import clsx from "clsx";
 
 type ButtonVariant = "primary" | "secondary" | "outline" | "text";
 type ButtonSize = "sm" | "md" | "lg";
@@ -19,22 +20,23 @@ const Button = ({
   fullWidth = false,
   isLoading = false,
   children,
+  disabled,
   className,
-  ...props
+  ...restProps
 }: ButtonProps) => {
   return (
     <button
-      className={`
-        ${styles.button}
-        ${styles[variant]}
-        ${styles[`size-${size}`]}
-        ${fullWidth ? styles.fullWidth : ""}
-        ${isLoading ? styles.loading : ""}
-        ${className || ""}
-        ${props.disabled ? styles.disabled : ""}
-      `}
-      disabled={isLoading || props.disabled}
-      {...props}
+      className={clsx(
+        styles.button,
+        styles[variant],
+        styles[`size-${size}`],
+        fullWidth && styles.fullWidth,
+        isLoading && styles.loading,
+        disabled && styles.disabled,
+        className
+      )}
+      disabled={isLoading || disabled}
+      {...restProps}
     >
       {isLoading ? (
         <div className={styles.loadingContainer}>
