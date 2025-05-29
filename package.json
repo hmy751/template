@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.7",
+    "clsx": "^2.1.1",
     "path": "^0.12.7",
     "postcss": "^8.5.3",
     "react": "^19.1.0",
