@@ -1,6 +1,6 @@
 import type { Preview } from '@storybook/react-webpack5'
 
-import "../src/style/global.css";
+import "../src/styles/globals.css";
 // import "../src/styles/tailwindcss.globals.css";
 
 
