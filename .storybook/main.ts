@@ -22,6 +22,7 @@ const config: StorybookConfig = {
   "framework": {
     "name": getAbsolutePath('@storybook/react-webpack5'),
     "options": {}
-  }
+  },
+  staticDirs: ['../public']
 };
 export default config;
