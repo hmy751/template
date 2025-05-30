@@ -128,6 +128,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           isTouched && styles.isTouched,
           isFocused && styles.isFocused,
           isError && styles.isError,
+          isError
+            ? "global-focus-visible-error"
+            : "global-focus-visible-default",
           disabled && styles.isDisabled,
           className
         )}
