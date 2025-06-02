@@ -37,8 +37,8 @@ export const Primary: Story = {
           {...Primary.args}
           isFocused={isFocused}
           isTouched={isTouched}
-          onFocusChange={setIsFocused}
-          onTouchChange={setIsTouched}
+          onChangeFocus={setIsFocused}
+          onChangeTouch={setIsTouched}
         />
       </div>
     );
@@ -58,8 +58,8 @@ export const Focused: Story = {
           placeholder="Enter Text..."
           isFocused={isFocused}
           isTouched={isTouched}
-          onFocusChange={setIsFocused}
-          onTouchChange={setIsTouched}
+          onChangeFocus={setIsFocused}
+          onChangeTouch={setIsTouched}
         />
       </div>
     );
@@ -80,8 +80,8 @@ export const Touched: Story = {
           placeholder="Enter Text..."
           isTouched={isTouched}
           isFocused={isFocused}
-          onTouchChange={setIsTouched}
-          onFocusChange={setIsFocused}
+          onChangeTouch={setIsTouched}
+          onChangeFocus={setIsFocused}
         />
       </div>
     );
@@ -102,8 +102,8 @@ export const Error: Story = {
           placeholder="Enter Text..."
           isFocused={isFocused}
           isTouched={isTouched}
-          onFocusChange={setIsFocused}
-          onTouchChange={setIsTouched}
+          onChangeFocus={setIsFocused}
+          onChangeTouch={setIsTouched}
           isError={errorMessage}
         />
       </div>

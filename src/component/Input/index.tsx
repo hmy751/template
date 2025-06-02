@@ -14,31 +14,31 @@ import clsx from "clsx";
 import styles from "./index.module.css";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  isFocused?: boolean;
-  isTouched?: boolean;
-  isError?: string;
   placeholder?: string;
+  isTouched?: boolean;
+  onChangeTouch?: (isTouched: boolean) => void;
+  isFocused?: boolean;
+  onChangeFocus?: (isFocused: boolean) => void;
+  isError?: string;
   isDisabled?: boolean;
-  onFocusChange?: (isFocused: boolean) => void;
-  onTouchChange?: (isTouched: boolean) => void;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
+      placeholder,
       isFocused: controlledFocus,
       onFocus,
-      onFocusChange,
+      onChangeFocus,
       onBlur,
       isTouched: controlledTouch,
       onTouchStart,
-      onTouchChange,
       onMouseDown,
+      onChangeTouch,
       isError,
-      placeholder,
+      disabled,
       isDisabled,
       className,
-      disabled,
       ...restProps
     }: InputProps,
     ref: React.Ref<HTMLInputElement>
@@ -75,13 +75,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     ) => {
       e.stopPropagation();
 
-      // 단순 상위에서 조정하는 이벤트
-      onTouchChange?.(true);
-
-      // 내부 이벤트
+      // 내부 unControlled 상태 이벤트
       setUnControlledTouch(true);
 
-      // 상위 useForm과 같은 controlled 이벤트
+      // 단순 boolean 상태 이벤트
+      onChangeTouch?.(true);
+
+      // 상위 useForm과 같은 controlled 상태 이벤트
       onTouchStart?.(e as TouchEvent<HTMLInputElement>);
       onMouseDown?.(e as MouseEvent<HTMLInputElement>);
     };
@@ -96,12 +96,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       (e: FocusEvent<HTMLInputElement>) => {
         e.stopPropagation();
 
-        onFocusChange?.(true);
-
         setUncontrolledFocus(true);
+
+        onChangeFocus?.(true);
+
         onFocus?.(e);
       },
-      [onFocusChange, onFocus]
+      [onChangeFocus, onFocus]
     );
 
     // blur 이벤트
@@ -109,13 +110,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       (e: FocusEvent<HTMLInputElement>) => {
         e.stopPropagation();
 
-        onFocusChange?.(false);
-
         setUncontrolledFocus(false);
+
+        onChangeFocus?.(false);
 
         onBlur?.(e);
       },
-      [onFocusChange, onBlur, isControlledFocus]
+      [onChangeFocus, onBlur, isControlledFocus]
     );
 
     return (
