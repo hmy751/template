@@ -1,4 +1,6 @@
 .select {
+  all: unset;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -8,7 +10,7 @@
   font-size: var(--font-base);
   background-color: var(--color-gray-50);
   cursor: pointer;
-  transition: var(--transition-base);
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
 .fullWidth {
