@@ -57,12 +57,11 @@ const ElementsBox = ({
 ElementsBox.displayName = "Field.ElementsBox";
 
 export interface LabelProps extends HTMLAttributes<HTMLLabelElement> {
-  label: string;
   maxWidth?: string;
   children: ReactNode;
 }
 
-const Label = ({ label, children, ...restProps }: LabelProps) => {
+const Label = ({ children, ...restProps }: LabelProps) => {
   return (
     <label className={styles.label} {...restProps}>
       {children}
