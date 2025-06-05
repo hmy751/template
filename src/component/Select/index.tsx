@@ -13,16 +13,17 @@ import {
   useRef,
   useCallback,
   RefObject,
+  useMemo,
 } from "react";
 import clsx from "clsx";
 import styles from "./index.module.css";
 
-interface SelectContextProps {
+interface SelectContextType {
   value?: string | number;
   onChangeValue?: (value: string) => void;
 }
 
-const SelectContext = createContext<SelectContextProps | undefined>(undefined);
+const SelectContext = createContext<SelectContextType>({} as SelectContextType);
 
 export interface SelectRootProps
   extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "size"> {
@@ -151,8 +152,16 @@ const Root = forwardRef<HTMLSelectElement, SelectRootProps>(
       [onChange, onChangeValue]
     );
 
+    const contextValue = useMemo(
+      () => ({
+        value,
+        onChangeValue,
+      }),
+      [value, onChangeValue]
+    );
+
     return (
-      <SelectContext.Provider value={{ value, onChangeValue }}>
+      <SelectContext.Provider value={contextValue}>
         <select
           ref={assignRef}
           value={value}

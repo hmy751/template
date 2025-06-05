@@ -22,11 +22,7 @@ interface DialogContextType {
   controlled?: boolean;
 }
 
-const DialogContext = createContext<DialogContextType>({
-  open: false,
-  setOpen: () => {},
-  controlled: false,
-});
+const DialogContext = createContext<DialogContextType>({} as DialogContextType);
 
 export interface DialogRootProps {
   children: ReactNode;
@@ -50,7 +46,7 @@ const Root = ({
     return setUncontrolledOpen;
   }, [isControlled, onOpenChange]);
 
-  const value = useMemo(
+  const contextValue = useMemo(
     () => ({
       open,
       setOpen,
@@ -60,7 +56,9 @@ const Root = ({
   );
 
   return (
-    <DialogContext.Provider value={value}>{children}</DialogContext.Provider>
+    <DialogContext.Provider value={contextValue}>
+      {children}
+    </DialogContext.Provider>
   );
 };
 
