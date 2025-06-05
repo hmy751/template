@@ -6,6 +6,7 @@ import Input from "../../Input";
 import Select from "../../Select";
 import Text from "../../Text";
 import RadioGroup from "../../RadioGroup";
+import Checkbox from "../../Checkbox";
 
 const meta = {
   title: "Common/Field",
@@ -115,7 +116,7 @@ export const WithError: StoryOmitArgs = {
   },
 };
 
-export const WithRadioGroup = {
+export const WithRadioGroup: StoryOmitArgs = {
   render: () => {
     return (
       <Field ariaLabelledby="survey-group">
@@ -138,6 +139,29 @@ export const WithRadioGroup = {
               </RadioGroup.Item>
             </Field.Label>
           </RadioGroup>
+        </Field.ElementsBox>
+      </Field>
+    );
+  },
+};
+
+export const WithCheckBox: StoryOmitArgs = {
+  render: () => {
+    const [isChecked, setIsChecked] = useState(false);
+
+    return (
+      <Field ariaLabelledby="survey-group">
+        <Field.Title id="survey-group">설문 문항</Field.Title>
+        <Field.ElementsBox>
+          <Checkbox
+            id="checkbox"
+            checked={isChecked}
+            onChange={(e) => setIsChecked(e.target.checked)}
+            value="agreed"
+            name="terms"
+          >
+            약관 동의
+          </Checkbox>
         </Field.ElementsBox>
       </Field>
     );
