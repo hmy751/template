@@ -66,7 +66,6 @@ const Label = ({ label, children, ...restProps }: LabelProps) => {
   return (
     <label className={styles.label} {...restProps}>
       {children}
-      <span className="visually-hidden">{label}</span>
     </label>
   );
 };

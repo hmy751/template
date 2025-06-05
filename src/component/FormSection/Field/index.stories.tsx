@@ -57,6 +57,7 @@ export const DoubleItem = {
         <Field.ElementsBox>
           <Field.Label label="email-id" style={{ maxWidth: "100px" }}>
             <Input />
+            <span className="visually-hidden">이메일 아이디 입력</span>
           </Field.Label>
           <Text>@</Text>
           <Field.Label label="email-domain">
@@ -64,6 +65,7 @@ export const DoubleItem = {
               <Select.Option value="option1">gmail.com</Select.Option>
               <Select.Option value="option2">naver.com</Select.Option>
             </Select>
+            <span className="visually-hidden">이메일 도메인 선택</span>
           </Field.Label>
         </Field.ElementsBox>
       </Field>
@@ -79,6 +81,7 @@ export const WithDescription = {
         <Field.ElementsBox>
           <Field.Label label="password">
             <Input />
+            <span className="visually-hidden">비밀번호 입력</span>
           </Field.Label>
         </Field.ElementsBox>
         <Field.Description>
@@ -99,6 +102,7 @@ export const WithError = {
         <Field.ElementsBox>
           <Field.Label label="password">
             <Input isError={errorMessage} />
+            <span className="visually-hidden">비밀번호 입력</span>
           </Field.Label>
         </Field.ElementsBox>
         <Field.Description>
