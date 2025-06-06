@@ -150,8 +150,8 @@ export const WithCheckBox: StoryOmitArgs = {
     const [isChecked, setIsChecked] = useState(false);
 
     return (
-      <Field ariaLabelledby="survey-group">
-        <Field.Title id="survey-group">설문 문항</Field.Title>
+      <Field ariaLabelledby="terms-group">
+        <Field.Title id="terms-group">약관 동의</Field.Title>
         <Field.ElementsBox>
           <Checkbox
             id="checkbox"
