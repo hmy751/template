@@ -123,21 +123,15 @@ export const WithRadioGroup: StoryOmitArgs = {
         <Field.Title id="survey-group">설문 문항</Field.Title>
         <Field.ElementsBox>
           <RadioGroup name="survey" direction="horizontal">
-            <Field.Label>
-              <RadioGroup.Item value="1" direction="vertical">
-                1
-              </RadioGroup.Item>
-            </Field.Label>
-            <Field.Label>
-              <RadioGroup.Item value="2" direction="vertical">
-                2
-              </RadioGroup.Item>
-            </Field.Label>
-            <Field.Label>
-              <RadioGroup.Item value="3" direction="vertical">
-                3
-              </RadioGroup.Item>
-            </Field.Label>
+            <RadioGroup.Item value="1" direction="vertical">
+              1
+            </RadioGroup.Item>
+            <RadioGroup.Item value="2" direction="vertical">
+              2
+            </RadioGroup.Item>
+            <RadioGroup.Item value="3" direction="vertical">
+              3
+            </RadioGroup.Item>
           </RadioGroup>
         </Field.ElementsBox>
       </Field>

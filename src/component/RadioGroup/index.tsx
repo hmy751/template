@@ -6,9 +6,9 @@ import {
   createContext,
   useContext,
   useMemo,
+  useId,
 } from "react";
 import clsx from "clsx";
-import Text from "../Text";
 import styles from "./index.module.css";
 
 type Direction = "horizontal" | "vertical";
@@ -67,9 +67,11 @@ export interface ItemProps extends HtmlHTMLAttributes<HTMLInputElement> {
 }
 
 const Item = forwardRef<HTMLInputElement, ItemProps>(
-  ({ value, direction, children, ...restProps }, ref) => {
+  ({ id: propId, value, direction, children, ...restProps }, ref) => {
     const isVertical = direction === "vertical";
     const isHorizontal = direction === "horizontal";
+
+    const inputId = propId ?? useId();
 
     const {
       name,
@@ -95,6 +97,7 @@ const Item = forwardRef<HTMLInputElement, ItemProps>(
         )}
       >
         <input
+          id={inputId}
           value={value}
           ref={ref}
           type="radio"
@@ -104,9 +107,9 @@ const Item = forwardRef<HTMLInputElement, ItemProps>(
           className={clsx("global-focus-visible-default:focus-visible")}
           {...restProps}
         />
-        <Text as="span" className={styles.text}>
+        <label htmlFor={inputId} className={styles.text}>
           {children}
-        </Text>
+        </label>
       </div>
     );
   }

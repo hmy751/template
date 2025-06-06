@@ -59,6 +59,10 @@
   transform: scale(1);
 }
 
+.item input[type="radio"]:focus {
+  border-color: var(--color-primary);
+}
+
 .item input[type="radio"]:disabled {
   border-color: var(--color-gray-300);
   background-color: var(--color-gray-100);
@@ -72,6 +76,7 @@
 .text {
   color: var(--color-text-primary);
   user-select: none;
+  cursor: pointer;
 }
 
 .item input[type="radio"]:disabled + .text {
