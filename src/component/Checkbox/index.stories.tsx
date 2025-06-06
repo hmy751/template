@@ -20,8 +20,8 @@ export const Primary: StoryOmitArgs = {
   render: () => {
     const [isChecked, setIsChecked] = useState(false);
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setIsChecked(event.target.checked);
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setIsChecked(e.target.checked);
     };
 
     return (

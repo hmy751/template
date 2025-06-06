@@ -20,11 +20,7 @@ const CheckmarkIcon = () => (
 );
 
 export interface CheckboxProps
-  extends Omit<
-    InputHTMLAttributes<HTMLInputElement>,
-    "type" | "onChange" | "value"
-  > {
-  checked: boolean;
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   children?: ReactNode;
   value?: string | number;
@@ -33,16 +29,7 @@ export interface CheckboxProps
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
-    {
-      id,
-      checked,
-      onChange,
-      children,
-      disabled,
-      className,
-      value,
-      ...restProps
-    },
+    { id, onChange, children, disabled, className, value, ...restProps },
     ref
   ) => {
     return (
@@ -55,7 +42,6 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           type="checkbox"
           ref={ref}
           className={clsx("visually-hidden")}
-          checked={checked}
           onChange={onChange}
           disabled={disabled}
           value={value}
@@ -64,7 +50,6 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         <span
           className={clsx(
             styles.customCheckbox,
-            checked && styles.checked,
             "global-focus-visible-default"
           )}
           aria-hidden="true"
