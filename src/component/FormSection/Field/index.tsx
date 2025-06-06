@@ -90,7 +90,11 @@ export interface MessageProps {
 }
 
 const Message = ({ children }: MessageProps) => {
-  return <Text className={styles.message}>{children}</Text>;
+  return (
+    <Text size="sm" color="error">
+      {children}
+    </Text>
+  );
 };
 
 Message.displayName = "Field.Message";
