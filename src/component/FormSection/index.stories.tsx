@@ -9,6 +9,7 @@ import Text from "../Text";
 import Checkbox from "../Checkbox";
 import Button from "../Button";
 import RadioGroup from "../RadioGroup";
+import MultiSelect from "../MultiSelect";
 
 const meta = {
   title: "Common/FormSection",
@@ -27,7 +28,16 @@ type FormValues = {
   password: string;
   terms: boolean;
   age: string;
+  techStack: string[];
 };
+
+const options = [
+  { value: "react", label: "React" },
+  { value: "vue", label: "Vue" },
+  { value: "angular", label: "Angular" },
+  { value: "svelte", label: "Svelte" },
+  { value: "solid", label: "Solid.js" },
+];
 
 interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
   children: ReactNode;
@@ -124,6 +134,8 @@ export const Primary = {
   },
 };
 
+// register는 단순 event객체를 받는 onChange메서드 형태로 이루어져서 event.target값을 직접받아서 처리하는 경우 적합하다.
+// 포인트는 네이티브 요소 input과 직접 소통하는 형태가 register에 적합하다.
 export const WithRegisterValidate = {
   render: () => {
     const {
@@ -302,6 +314,7 @@ export const WithController: StoryObj = {
         emailDomain: "",
         password: "",
         age: "",
+        techStack: [],
         terms: false,
       },
     });
@@ -440,6 +453,49 @@ export const WithController: StoryObj = {
             />
           </Field.ElementsBox>
           <Field.Message>{errors.age?.message}</Field.Message>
+        </Field>
+
+        {/* 기숙스택 필드 */}
+        <Field ariaLabelledby="techStack-group">
+          <Field.Title id="techStack-group">기술 스택</Field.Title>
+          <Field.ElementsBox elementsHeight="50px">
+            <Controller
+              name="techStack"
+              control={control}
+              rules={{
+                validate: {
+                  min: (v) => v.length >= 1 || "최소 1개 이상 선택해주세요.",
+                  max: (v) =>
+                    v.length <= 3 || "최대 3개까지 선택이 가능합니다.",
+                },
+              }}
+              render={({ field, fieldState }) => (
+                <MultiSelect
+                  options={options}
+                  value={field.value}
+                  onChange={field.onChange}
+                >
+                  <MultiSelect.Trigger
+                    ref={field.ref}
+                    onBlur={field.onBlur}
+                    isError={!!fieldState.error}
+                    placeholder="기술 스택을 선택해주세요."
+                  />
+                  <MultiSelect.Menu>
+                    {options.map((option) => (
+                      <MultiSelect.Item key={option.value} value={option.value}>
+                        {option.label}
+                      </MultiSelect.Item>
+                    ))}
+                  </MultiSelect.Menu>
+                </MultiSelect>
+              )}
+            />
+          </Field.ElementsBox>
+          <Field.Description>
+            기술스택은 최소 1개에서 최대 3개까지 선택해주세요.
+          </Field.Description>
+          <Field.Message>{errors.techStack?.message}</Field.Message>
         </Field>
 
         {/* 약관 동의(Checkbox) 필드 */}
