@@ -37,7 +37,7 @@
 }
 
 .menu {
-  position: fixed;
+  position: absolute;
   background-color: var(--color-base-white);
   border: 1px solid var(--color-gray-200);
   border-radius: var(--radius-md);

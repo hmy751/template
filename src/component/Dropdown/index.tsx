@@ -28,7 +28,6 @@ interface DropdownContextType {
   selectedValue?: string | number;
   onChangeValue: (value: string | number) => void;
   setTriggerElement: Dispatch<SetStateAction<HTMLButtonElement | null>>;
-  menuElement: HTMLUListElement | null;
   setMenuElement: Dispatch<SetStateAction<HTMLUListElement | null>>;
   positionStyles: CSSProperties;
 }
@@ -58,6 +57,8 @@ const Root = ({ children, value, onChange }: RootProps) => {
     isOpen
   );
 
+  useClickOutsideEffect([menuElement, rootRef.current], () => setIsOpen(false));
+
   const onChangeValue = useCallback(
     (newValue: string | number) => {
       onChange?.(newValue);
@@ -73,7 +74,6 @@ const Root = ({ children, value, onChange }: RootProps) => {
       selectedValue: value,
       onChangeValue,
       setTriggerElement,
-      menuElement,
       setMenuElement,
       positionStyles,
       rootRef,
@@ -142,10 +142,8 @@ export interface MenuProps {
 }
 
 const Menu = ({ children, className }: MenuProps) => {
-  const { isOpen, menuElement, setMenuElement, positionStyles, setIsOpen } =
+  const { isOpen, setMenuElement, positionStyles } =
     useContext(DropdownContext);
-
-  useClickOutsideEffect(menuElement, () => setIsOpen(false));
 
   return (
     <>
