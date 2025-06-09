@@ -178,9 +178,10 @@ const Item = ({ children, value, className, ...restProps }: ItemProps) => {
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent<HTMLLIElement>) => {
-      e.stopPropagation();
-
       if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        e.stopPropagation();
+
         onChangeValue?.(value);
       }
     },
