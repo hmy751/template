@@ -1,9 +1,8 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import Grid from './index'; // Grid 컴포넌트
-import Card from '../Card'; // Card 컴포넌트
-import Image from '../ImageBox'; // Image 컴포넌트
+import Grid from './index';
+import Card from '../Card';
+import Image from '../ImageBox';
 
 const sampleProducts = Array.from({ length: 8 }, (_, i) => ({
   id: i + 1,
