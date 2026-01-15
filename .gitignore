@@ -10,3 +10,5 @@ dist
 !.yarn/versions
 *storybook.log
 storybook-static
+
+.DS_Store
